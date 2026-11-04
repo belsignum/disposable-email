@@ -3,6 +3,7 @@
 namespace Belsignum\DisposableEmail\Service;
 
 use Belsignum\DisposableEmail\Utility\DomainNormalizationUtility;
+use Belsignum\DisposableEmail\Utility\DomainRuleConfiguration;
 use Belsignum\DisposableEmail\Utility\ExtensionConfigurationUtility;
 use Belsignum\DisposableEmail\Utility\ListTypeConfiguration;
 use TYPO3\CMS\Core\Database\Connection;
@@ -48,6 +49,15 @@ class DisposableEmailService
             return false;
         }
 
+        // Editorial rules from the backend module take precedence over all provider lists.
+        $ruleType = $this->findDomainRule($normalizedDomain);
+        if ($ruleType === DomainRuleConfiguration::RULE_ALLOW) {
+            return false;
+        }
+        if ($ruleType === DomainRuleConfiguration::RULE_DENY) {
+            return true;
+        }
+
         $queryBuilder = $this->connectionPool
             ->getConnectionForTable(self::TABLE_NAME)
             ->createQueryBuilder();
@@ -69,5 +79,65 @@ class DisposableEmailService
             ->setMaxResults(1);
 
         return $queryBuilder->executeQuery()->fetchOne() !== false;
+    }
+
+    /**
+     * Returns the active rule type (allow|deny) for the domain, or null when no rule exists.
+     */
+    public function findDomainRule(string $domain): ?string
+    {
+        $normalizedDomain = DomainNormalizationUtility::normalizeDomain($domain);
+        if ($normalizedDomain === '') {
+            return null;
+        }
+
+        // default restrictions exclude deleted and hidden rules
+        $queryBuilder = $this->connectionPool->getQueryBuilderForTable(DomainRuleConfiguration::TABLE_NAME);
+        $ruleType = $queryBuilder
+            ->select('rule_type')
+            ->from(DomainRuleConfiguration::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'domain',
+                    $queryBuilder->createNamedParameter($normalizedDomain)
+                )
+            )
+            ->orderBy('uid', 'DESC')
+            ->setMaxResults(1)
+            ->executeQuery()
+            ->fetchOne();
+
+        return is_string($ruleType) && DomainRuleConfiguration::isValidRuleType($ruleType) ? $ruleType : null;
+    }
+
+    /**
+     * Returns all provider types (disposable|freemail|custom) whose imported lists contain the domain,
+     * regardless of the configured list type. Used for diagnosis in the backend module.
+     *
+     * @return string[]
+     */
+    public function getProviderTypesForDomain(string $domain): array
+    {
+        $normalizedDomain = DomainNormalizationUtility::normalizeDomain($domain);
+        if ($normalizedDomain === '') {
+            return [];
+        }
+
+        $queryBuilder = $this->connectionPool
+            ->getConnectionForTable(self::TABLE_NAME)
+            ->createQueryBuilder();
+
+        return $queryBuilder
+            ->select('provider_type')
+            ->from(self::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->eq(
+                    'domain',
+                    $queryBuilder->createNamedParameter($normalizedDomain)
+                )
+            )
+            ->orderBy('provider_type')
+            ->executeQuery()
+            ->fetchFirstColumn();
     }
 }

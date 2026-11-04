@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2026-11-04T12:00:00Z" product-name="disposable_email">
+		<header/>
+		<body>
+			<trans-unit id="tx_disposableemail_domain_rule" resname="tx_disposableemail_domain_rule">
+				<source>Domain rule</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.domain" resname="tx_disposableemail_domain_rule.domain">
+				<source>Domain</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.domain.description" resname="tx_disposableemail_domain_rule.domain.description">
+				<source>Domain without @, e.g. example.com. A full email address is reduced to its domain on save.</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.domain.invalid" resname="tx_disposableemail_domain_rule.domain.invalid">
+				<source>"%s" is not a valid domain. The entry was not saved.</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.domain.duplicate" resname="tx_disposableemail_domain_rule.domain.duplicate">
+				<source>A rule for "%s" already exists. The entry was not saved.</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.rule_type" resname="tx_disposableemail_domain_rule.rule_type">
+				<source>Rule</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.rule_type.allow" resname="tx_disposableemail_domain_rule.rule_type.allow">
+				<source>Whitelist (always accept)</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.rule_type.deny" resname="tx_disposableemail_domain_rule.rule_type.deny">
+				<source>Blacklist (always reject)</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.note" resname="tx_disposableemail_domain_rule.note">
+				<source>Note</source>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.note.description" resname="tx_disposableemail_domain_rule.note.description">
+				<source>Reason for the entry, e.g. company or ticket.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

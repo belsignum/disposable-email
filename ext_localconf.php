@@ -14,3 +14,7 @@ if (
         'className' => \Belsignum\DisposableEmail\Xclass\Powermail\Validator\InputValidator::class,
     ];
 }
+
+// domain rules: normalize input (domain or full email address), reject invalid and duplicate domains
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']['disposable_email']
+    = \Belsignum\DisposableEmail\Hooks\DomainRuleDataHandlerHook::class;

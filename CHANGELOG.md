@@ -4,6 +4,28 @@ This changelog documents changes for `belsignum/disposable-email`.
 
 ## Unreleased
 
+### Added
+- Backend module *System > Email domain rules* to maintain a whitelist (always accept) and a blacklist
+  (always reject) of email domains, stored in `tx_disposableemail_domain_rule`.
+- Domain check in the module: imported lists containing a domain, matching rule and effective result.
+- `DisposableEmailService::findDomainRule()` and `DisposableEmailService::getProviderTypesForDomain()`.
+
+### Changed
+- `DisposableEmailService::checkDomain()` applies whitelist and blacklist rules before the provider lists.
+- Free email source `okutbay/free_email_provider_domains` (~96,600 domains, many non-freemail domains such as `sfs.com`)
+  replaced by [Kikobeats/free-email-domains](https://github.com/Kikobeats/free-email-domains)
+  (HubSpot free domains plus curated additions, DNS validated, rebuilt daily).
+- Removed the free email sources `humphreybc/free_email_providers` (last changed 2017) and
+  `edwin-zvs/email-providers` (last changed 2022). Beyond Kikobeats they mainly added domains without mail service
+  and former providers now owned by companies; Kikobeats is the only free email source now.
+- `UpdateDisposableEmailProviderListCommand::ENDPOINT_LISTS` renamed to `DISPOSABLE_EMAIL_LISTS`, matching
+  `FREE_EMAIL_LISTS` and the provider type it feeds. Subclasses overriding the old constant must be adapted.
+- Disposable source `disposable/disposable-email-domains` switched from `domains_strict.txt` to
+  `domains_forwarding.txt`. Since the upstream refactor of 2025-10 the strict list also contains mailbox providers
+  with anonymous signup (e.g. `outlook.com`, `hotmail.com`, `proton.me`), which rejected them for list type
+  `disposable`. The forwarding list matches the former strict list: disposable plus alias/forwarding services.
+- Provider lists may be JSON arrays of strings (`application/json` accepted), parsed by `ProviderListParser`.
+
 ## 12.2.0 - 2026-02-25
 
 ### Ported from v10

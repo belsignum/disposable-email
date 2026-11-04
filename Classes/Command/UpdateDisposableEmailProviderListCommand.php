@@ -5,6 +5,7 @@ namespace Belsignum\DisposableEmail\Command;
 
 use Belsignum\DisposableEmail\Utility\DomainNormalizationUtility;
 use Belsignum\DisposableEmail\Utility\ListTypeConfiguration;
+use Belsignum\DisposableEmail\Utility\ProviderListParser;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -29,7 +30,8 @@ class UpdateDisposableEmailProviderListCommand extends Command
 
     protected const FREE_EMAIL_LISTS = [
         'https://gist.githubusercontent.com/humphreybc/d17e9215530684d6817ebe197c94a76b/raw/409d79d56965c365598d189aeb1ffba642f3770d/free_email_providers.conf',
-        'https://gist.githubusercontent.com/okutbay/5b4974b70673dfdcc21c517632c1f984/raw/993a35930a8d24a1faab1b988d19d38d92afbba4/free_email_provider_domains.txt',
+        // HubSpot free domains, curated additions and DNS validated, rebuilt daily (JSON array)
+        'https://raw.githubusercontent.com/Kikobeats/free-email-domains/master/domains.json',
         'https://raw.githubusercontent.com/edwin-zvs/email-providers/master/email-providers.csv',
     ];
 
@@ -162,14 +164,17 @@ class UpdateDisposableEmailProviderListCommand extends Command
         }
 
         $contentType = strtolower($response->getHeaderLine('Content-Type'));
-        if (strpos($contentType, 'text/plain') !== 0 && strpos($contentType, 'text/csv') !== 0) {
+        if (
+            strpos($contentType, 'text/plain') !== 0
+            && strpos($contentType, 'text/csv') !== 0
+            && strpos($contentType, 'application/json') !== 0
+        ) {
             throw new \RuntimeException(
-                'The request did not return text/plain or text/csv data',
+                'The request did not return text/plain, text/csv or application/json data',
             );
         }
 
-        $content = $response->getBody()->getContents();
-        return GeneralUtility::trimExplode(LF, $content, true);
+        return ProviderListParser::parse($response->getBody()->getContents());
     }
 
     protected function validateEndpointUrl(string $endpoint): void

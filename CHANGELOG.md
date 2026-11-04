@@ -12,6 +12,10 @@ This changelog documents changes for `belsignum/disposable-email`.
 
 ### Changed
 - `DisposableEmailService::checkDomain()` applies whitelist and blacklist rules before the provider lists.
+- Free email source `okutbay/free_email_provider_domains` (~96,600 domains, many non-freemail domains such as `sfs.com`)
+  replaced by [Kikobeats/free-email-domains](https://github.com/Kikobeats/free-email-domains)
+  (HubSpot free domains plus curated additions, DNS validated, rebuilt daily).
+- Provider lists may be JSON arrays of strings (`application/json` accepted), parsed by `ProviderListParser`.
 
 ## 12.2.0 - 2026-02-25
 

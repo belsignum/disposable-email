@@ -68,6 +68,21 @@ Supported values are `disable`, `disposable`, `freemail`, `both`, `customListsOn
 - Validator for E-Mail Field comparing username or email address in fe_users
 - Optional validator option `listType` (`disable|disposable|freemail|both|customListsOnly`) to override extension configuration per field
 
+## Whitelist and blacklist (backend module)
+Module **System > Email domain rules** maintains domains that are always accepted or always rejected:
+
+- **Whitelist** (`allow`): the domain is accepted even if an imported provider list contains it.
+- **Blacklist** (`deny`): the domain is rejected even if no provider list contains it.
+- Rules apply to Powermail and CMS-Form validation. With list type `disable` no rule is applied.
+- Input may be a domain or a full email address; it is stored as normalized domain (lowercase, punycode).
+  Invalid and duplicate domains are rejected on save. Matching is exact, subdomains need their own entry.
+- Hidden rules are ignored. Rules are stored in `tx_disposableemail_domain_rule` on the root level (pid 0)
+  and are not touched by `disposable-email:update`.
+- **Check domain** shows which imported lists contain a domain, whether a rule exists, and the effective result
+  for the configured list type.
+
+Editors need access to the module and modify permission for the table `tx_disposableemail_domain_rule`.
+
 ## List storage and deduplication
 - Domains are stored with `provider_type` (`disposable`, `freemail`, `custom`).
 - Deduplication is done per `provider_type`.

@@ -4,6 +4,15 @@ This changelog documents changes for `belsignum/disposable-email`.
 
 ## Unreleased
 
+### Added
+- Backend module *System > Email domain rules* to maintain a whitelist (always accept) and a blacklist
+  (always reject) of email domains, stored in `tx_disposableemail_domain_rule`.
+- Domain check in the module: imported lists containing a domain, matching rule and effective result.
+- `DisposableEmailService::findDomainRule()` and `DisposableEmailService::getProviderTypesForDomain()`.
+
+### Changed
+- `DisposableEmailService::checkDomain()` applies whitelist and blacklist rules before the provider lists.
+
 ## 12.2.0 - 2026-02-25
 
 ### Ported from v10

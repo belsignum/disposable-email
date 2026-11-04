@@ -22,12 +22,14 @@ class UpdateDisposableEmailProviderListCommand extends Command
     protected const FIELD_NAME = 'domain';
     protected const FIELD_PROVIDER_TYPE = 'provider_type';
 
-    protected const ENDPOINT_LISTS = [
+    // imported as provider_type 'disposable'; file names (e.g. 'strict') are the upstream variants
+    protected const DISPOSABLE_EMAIL_LISTS = [
         'https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains_strict.txt',
         'https://raw.githubusercontent.com/groundcat/disposable-email-domain-list/master/domains.txt',
         'https://raw.githubusercontent.com/wesbos/burner-email-providers/master/emails.txt',
     ];
 
+    // imported as provider_type 'freemail'
     protected const FREE_EMAIL_LISTS = [
         // HubSpot free domains, curated additions and DNS validated, rebuilt daily (JSON array)
         'https://raw.githubusercontent.com/Kikobeats/free-email-domains/master/domains.json',
@@ -65,7 +67,7 @@ class UpdateDisposableEmailProviderListCommand extends Command
         ];
 
         if (in_array($listType, [ListTypeConfiguration::LIST_TYPE_DISPOSABLE, ListTypeConfiguration::LIST_TYPE_BOTH], true)) {
-            $domainsByProviderType[ListTypeConfiguration::PROVIDER_TYPE_DISPOSABLE] = $this->collectDomains(self::ENDPOINT_LISTS);
+            $domainsByProviderType[ListTypeConfiguration::PROVIDER_TYPE_DISPOSABLE] = $this->collectDomains(self::DISPOSABLE_EMAIL_LISTS);
         }
 
         if (in_array($listType, [ListTypeConfiguration::LIST_TYPE_FREEMAIL, ListTypeConfiguration::LIST_TYPE_BOTH], true)) {

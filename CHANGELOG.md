@@ -18,6 +18,8 @@ This changelog documents changes for `belsignum/disposable-email`.
 - Removed the free email sources `humphreybc/free_email_providers` (last changed 2017) and
   `edwin-zvs/email-providers` (last changed 2022). Beyond Kikobeats they mainly added domains without mail service
   and former providers now owned by companies; Kikobeats is the only free email source now.
+- `UpdateDisposableEmailProviderListCommand::ENDPOINT_LISTS` renamed to `DISPOSABLE_EMAIL_LISTS`, matching
+  `FREE_EMAIL_LISTS` and the provider type it feeds. Subclasses overriding the old constant must be adapted.
 - Provider lists may be JSON arrays of strings (`application/json` accepted), parsed by `ProviderListParser`.
 
 ## 12.2.0 - 2026-02-25

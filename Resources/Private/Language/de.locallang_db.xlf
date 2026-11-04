@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2026-11-04T12:00:00Z" product-name="disposable_email">
+		<header/>
+		<body>
+			<trans-unit id="tx_disposableemail_domain_rule" resname="tx_disposableemail_domain_rule">
+				<source>Domain rule</source>
+				<target>Domain-Regel</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.domain" resname="tx_disposableemail_domain_rule.domain">
+				<source>Domain</source>
+				<target>Domain</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.domain.description" resname="tx_disposableemail_domain_rule.domain.description">
+				<source>Domain without @, e.g. example.com. A full email address is reduced to its domain on save.</source>
+				<target>Domain ohne @, z. B. example.com. Eine vollständige E-Mail-Adresse wird beim Speichern auf die Domain gekürzt.</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.domain.invalid" resname="tx_disposableemail_domain_rule.domain.invalid">
+				<source>"%s" is not a valid domain. The entry was not saved.</source>
+				<target>„%s“ ist keine gültige Domain. Der Eintrag wurde nicht gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.domain.duplicate" resname="tx_disposableemail_domain_rule.domain.duplicate">
+				<source>A rule for "%s" already exists. The entry was not saved.</source>
+				<target>Für „%s“ gibt es bereits eine Regel. Der Eintrag wurde nicht gespeichert.</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.rule_type" resname="tx_disposableemail_domain_rule.rule_type">
+				<source>Rule</source>
+				<target>Regel</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.rule_type.allow" resname="tx_disposableemail_domain_rule.rule_type.allow">
+				<source>Whitelist (always accept)</source>
+				<target>Whitelist (immer zulassen)</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.rule_type.deny" resname="tx_disposableemail_domain_rule.rule_type.deny">
+				<source>Blacklist (always reject)</source>
+				<target>Blacklist (immer ablehnen)</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.note" resname="tx_disposableemail_domain_rule.note">
+				<source>Note</source>
+				<target>Notiz</target>
+			</trans-unit>
+			<trans-unit id="tx_disposableemail_domain_rule.note.description" resname="tx_disposableemail_domain_rule.note.description">
+				<source>Reason for the entry, e.g. company or ticket.</source>
+				<target>Grund für den Eintrag, z. B. Firma oder Ticket.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

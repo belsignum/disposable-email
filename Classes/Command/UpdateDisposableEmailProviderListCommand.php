@@ -29,10 +29,8 @@ class UpdateDisposableEmailProviderListCommand extends Command
     ];
 
     protected const FREE_EMAIL_LISTS = [
-        'https://gist.githubusercontent.com/humphreybc/d17e9215530684d6817ebe197c94a76b/raw/409d79d56965c365598d189aeb1ffba642f3770d/free_email_providers.conf',
         // HubSpot free domains, curated additions and DNS validated, rebuilt daily (JSON array)
         'https://raw.githubusercontent.com/Kikobeats/free-email-domains/master/domains.json',
-        'https://raw.githubusercontent.com/edwin-zvs/email-providers/master/email-providers.csv',
     ];
 
     protected ExtensionConfiguration $extensionConfiguration;

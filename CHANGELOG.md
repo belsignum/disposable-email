@@ -15,6 +15,9 @@ This changelog documents changes for `belsignum/disposable-email`.
 - Free email source `okutbay/free_email_provider_domains` (~96,600 domains, many non-freemail domains such as `sfs.com`)
   replaced by [Kikobeats/free-email-domains](https://github.com/Kikobeats/free-email-domains)
   (HubSpot free domains plus curated additions, DNS validated, rebuilt daily).
+- Removed the free email sources `humphreybc/free_email_providers` (last changed 2017) and
+  `edwin-zvs/email-providers` (last changed 2022). Beyond Kikobeats they mainly added domains without mail service
+  and former providers now owned by companies; Kikobeats is the only free email source now.
 - Provider lists may be JSON arrays of strings (`application/json` accepted), parsed by `ProviderListParser`.
 
 ## 12.2.0 - 2026-02-25

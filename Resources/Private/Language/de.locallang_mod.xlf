@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2026-11-04T12:00:00Z" product-name="disposable_email">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+				<source>Email domain rules</source>
+				<target>E-Mail-Domain-Regeln</target>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tablabel" resname="mlang_labels_tablabel">
+				<source>Whitelist and blacklist for email domains</source>
+				<target>Whitelist und Blacklist für E-Mail-Domains</target>
+			</trans-unit>
+			<trans-unit id="mlang_labels_tabdescr" resname="mlang_labels_tabdescr">
+				<source>Maintain domains that are always accepted or always rejected by the disposable and free email validation, and check why a domain is rejected.</source>
+				<target>Domains pflegen, die von der Wegwerf- und Freemail-Prüfung immer zugelassen oder immer abgelehnt werden, und nachsehen, warum eine Domain abgelehnt wird.</target>
+			</trans-unit>
+			<trans-unit id="module.intro" resname="module.intro">
+				<source>Whitelist entries override the provider lists, blacklist entries are rejected in addition to them. Both apply to Powermail and form validation.</source>
+				<target>Whitelist-Einträge gehen den Anbieterlisten vor, Blacklist-Einträge werden zusätzlich abgelehnt. Beides gilt für Powermail und Formular-Validierung.</target>
+			</trans-unit>
+			<trans-unit id="module.listType" resname="module.listType">
+				<source>Configured list type:</source>
+				<target>Eingestellter Listentyp:</target>
+			</trans-unit>
+			<trans-unit id="check.title" resname="check.title">
+				<source>Check domain</source>
+				<target>Domain prüfen</target>
+			</trans-unit>
+			<trans-unit id="check.label" resname="check.label">
+				<source>Domain or email address</source>
+				<target>Domain oder E-Mail-Adresse</target>
+			</trans-unit>
+			<trans-unit id="check.submit" resname="check.submit">
+				<source>Check</source>
+				<target>Prüfen</target>
+			</trans-unit>
+			<trans-unit id="check.invalid" resname="check.invalid">
+				<source>This is not a valid domain.</source>
+				<target>Das ist keine gültige Domain.</target>
+			</trans-unit>
+			<trans-unit id="check.result.blocked" resname="check.result.blocked">
+				<source>Rejected with the current configuration.</source>
+				<target>Wird mit der aktuellen Konfiguration abgelehnt.</target>
+			</trans-unit>
+			<trans-unit id="check.result.accepted" resname="check.result.accepted">
+				<source>Accepted with the current configuration.</source>
+				<target>Wird mit der aktuellen Konfiguration zugelassen.</target>
+			</trans-unit>
+			<trans-unit id="check.result.disabled" resname="check.result.disabled">
+				<source>Validation is disabled in the extension configuration.</source>
+				<target>Die Prüfung ist in der Extension-Konfiguration abgeschaltet.</target>
+			</trans-unit>
+			<trans-unit id="check.rule" resname="check.rule">
+				<source>Rule</source>
+				<target>Regel</target>
+			</trans-unit>
+			<trans-unit id="check.lists" resname="check.lists">
+				<source>Contained in imported lists</source>
+				<target>Enthalten in importierten Listen</target>
+			</trans-unit>
+			<trans-unit id="check.lists.hint" resname="check.lists.hint">
+				<source>Red: list is active for the configured list type. Grey: imported but not active.</source>
+				<target>Rot: Liste ist für den eingestellten Listentyp aktiv. Grau: importiert, aber nicht aktiv.</target>
+			</trans-unit>
+			<trans-unit id="check.addAllow" resname="check.addAllow">
+				<source>Add to whitelist</source>
+				<target>Zur Whitelist hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="check.addDeny" resname="check.addDeny">
+				<source>Add to blacklist</source>
+				<target>Zur Blacklist hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="providerType.disposable" resname="providerType.disposable">
+				<source>Disposable providers</source>
+				<target>Wegwerf-Anbieter</target>
+			</trans-unit>
+			<trans-unit id="providerType.freemail" resname="providerType.freemail">
+				<source>Free email providers</source>
+				<target>Freemail-Anbieter</target>
+			</trans-unit>
+			<trans-unit id="providerType.custom" resname="providerType.custom">
+				<source>Custom lists</source>
+				<target>Eigene Listen</target>
+			</trans-unit>
+			<trans-unit id="rules.allow.title" resname="rules.allow.title">
+				<source>Whitelist</source>
+				<target>Whitelist</target>
+			</trans-unit>
+			<trans-unit id="rules.allow.description" resname="rules.allow.description">
+				<source>Always accepted, even if a provider list contains the domain.</source>
+				<target>Immer zugelassen, auch wenn eine Anbieterliste die Domain enthält.</target>
+			</trans-unit>
+			<trans-unit id="rules.deny.title" resname="rules.deny.title">
+				<source>Blacklist</source>
+				<target>Blacklist</target>
+			</trans-unit>
+			<trans-unit id="rules.deny.description" resname="rules.deny.description">
+				<source>Always rejected, even if no provider list contains the domain.</source>
+				<target>Immer abgelehnt, auch wenn keine Anbieterliste die Domain enthält.</target>
+			</trans-unit>
+			<trans-unit id="rules.new" resname="rules.new">
+				<source>New entry</source>
+				<target>Neuer Eintrag</target>
+			</trans-unit>
+			<trans-unit id="rules.empty" resname="rules.empty">
+				<source>No entries.</source>
+				<target>Keine Einträge.</target>
+			</trans-unit>
+			<trans-unit id="rules.enable" resname="rules.enable">
+				<source>Enable</source>
+				<target>Aktivieren</target>
+			</trans-unit>
+			<trans-unit id="rules.disable" resname="rules.disable">
+				<source>Disable</source>
+				<target>Deaktivieren</target>
+			</trans-unit>
+			<trans-unit id="rules.delete.confirm" resname="rules.delete.confirm">
+				<source>Delete the rule for %s?</source>
+				<target>Regel für %s löschen?</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

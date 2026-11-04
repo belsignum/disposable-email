@@ -20,6 +20,10 @@ This changelog documents changes for `belsignum/disposable-email`.
   and former providers now owned by companies; Kikobeats is the only free email source now.
 - `UpdateDisposableEmailProviderListCommand::ENDPOINT_LISTS` renamed to `DISPOSABLE_EMAIL_LISTS`, matching
   `FREE_EMAIL_LISTS` and the provider type it feeds. Subclasses overriding the old constant must be adapted.
+- Disposable source `disposable/disposable-email-domains` switched from `domains_strict.txt` to
+  `domains_forwarding.txt`. Since the upstream refactor of 2025-10 the strict list also contains mailbox providers
+  with anonymous signup (e.g. `outlook.com`, `hotmail.com`, `proton.me`), which rejected them for list type
+  `disposable`. The forwarding list matches the former strict list: disposable plus alias/forwarding services.
 - Provider lists may be JSON arrays of strings (`application/json` accepted), parsed by `ProviderListParser`.
 
 ## 12.2.0 - 2026-02-25

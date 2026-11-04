@@ -22,9 +22,11 @@ class UpdateDisposableEmailProviderListCommand extends Command
     protected const FIELD_NAME = 'domain';
     protected const FIELD_PROVIDER_TYPE = 'provider_type';
 
-    // imported as provider_type 'disposable'; file names (e.g. 'strict') are the upstream variants
+    // imported as provider_type 'disposable'; file names (e.g. 'forwarding') are upstream naming
     protected const DISPOSABLE_EMAIL_LISTS = [
-        'https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains_strict.txt',
+        // upstream variant 'forwarding': disposable and alias/forwarding services, no mailbox providers
+        // (what 'strict' covered before the upstream refactor of 2025-10, which added e.g. outlook.com)
+        'https://raw.githubusercontent.com/disposable/disposable-email-domains/master/domains_forwarding.txt',
         'https://raw.githubusercontent.com/groundcat/disposable-email-domain-list/master/domains.txt',
         'https://raw.githubusercontent.com/wesbos/burner-email-providers/master/emails.txt',
     ];
